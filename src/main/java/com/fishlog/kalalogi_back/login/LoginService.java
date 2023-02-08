@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
 
-    public LoginResponse login(String username, String password) {
+    public LoginResponseDTO login(String username, String password) {
 
         return null;
     }
