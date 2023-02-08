@@ -36,7 +36,6 @@ CREATE TABLE role (
 CREATE TABLE species (
     id serial  NOT NULL,
     name varchar(255)  NOT NULL,
-    name_latin varchar(255)  NOT NULL,
     CONSTRAINT species_pk PRIMARY KEY (id)
 );
 
