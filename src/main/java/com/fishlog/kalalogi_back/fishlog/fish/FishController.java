@@ -19,8 +19,8 @@ public class FishController {
 
     @GetMapping("/fish/species")
     @Operation(summary = "Find all species from the database", description = "This is used for the species dropdown")
-    public void getAllSpecies() {
-        speciesService.getAllSpecies();
+    public List<SpeciesDto>  getAllSpecies() {
+        return speciesService.getAllSpecies();
     }
 
 }
