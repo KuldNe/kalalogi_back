@@ -1,6 +1,6 @@
-package domain.species;
+package com.fishlog.kalalogi_back.domain.species;
 
-import com.fishlog.kalalogi_back.fish.dto.SpeciesDto;
+import com.fishlog.kalalogi_back.fish.SpeciesDto;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")

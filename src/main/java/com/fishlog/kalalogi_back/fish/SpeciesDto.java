@@ -1,4 +1,4 @@
-package com.fishlog.kalalogi_back.fish.dto;
+package com.fishlog.kalalogi_back.fish;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

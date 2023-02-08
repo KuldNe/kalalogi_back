@@ -1,4 +1,4 @@
-package domain.species;
+package com.fishlog.kalalogi_back.domain.species;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;

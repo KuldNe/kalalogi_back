@@ -1,4 +1,4 @@
-package com.fishlog.kalalogi_back;
+package com.fishlog.kalalogi_back.fish;
 
 
 import jakarta.annotation.Resource;
