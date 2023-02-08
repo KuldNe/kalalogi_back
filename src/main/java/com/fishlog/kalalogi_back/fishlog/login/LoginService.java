@@ -1,4 +1,4 @@
-package com.fishlog.kalalogi_back.login;
+package com.fishlog.kalalogi_back.fishlog.login;
 
 import org.springframework.stereotype.Service;
 
