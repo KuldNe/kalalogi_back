@@ -5,6 +5,9 @@ import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface SpeciesMapper {
+
+    @Mapping(source = "speciesName", target = "name")
+    @Mapping(source = "speciesId", target = "id")
     Species toEntity(SpeciesDto speciesDto);
 
     SpeciesDto toDto(Species species);
