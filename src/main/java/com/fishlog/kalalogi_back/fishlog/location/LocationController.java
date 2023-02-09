@@ -22,8 +22,6 @@ public class LocationController {
         return locationService.getAllLocations();
     }
 
-//      public List<SpeciesDto>  getAllSpecies() { return fishLogService.getAllSpecies();
-
 
 
 }
