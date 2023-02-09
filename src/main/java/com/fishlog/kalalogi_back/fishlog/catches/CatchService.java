@@ -1,7 +1,8 @@
 package com.fishlog.kalalogi_back.fishlog.catches;
 
 
-import com.fishlog.kalalogi_back.fishlog.fish.LocationDto;
+
+import com.fishlog.kalalogi_back.fishlog.location.LocationDto;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class CatchService {
 
     @PostMapping("/catches")
-    public void addCatch(DateDto dateDto, LocationDto locationDto) {
+    public void addCatch(CatchDto catchDto) {
 
     }
 }
