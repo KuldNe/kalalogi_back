@@ -1,6 +1,8 @@
 package com.fishlog.kalalogi_back.fishlog.fish;
 
 
+import com.fishlog.kalalogi_back.domain.species.Species;
+import com.fishlog.kalalogi_back.domain.species.SpeciesService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +12,17 @@ import java.util.List;
 
 @RestController
 
-@Resource
 public class FishController {
+
+    @Resource
+    private SpeciesService speciesService;
+
+    @GetMapping("/fish/species")
+    @Operation(summary = "Find all species from the database", description = "This is used for the species dropdown")
+    public List<SpeciesDto>  getAllSpecies() {
+        return speciesService.getAllSpecies();
+    }
+
 }
 
-    @GetMapping("/catchlocations")
-    @Operation(summary = "Finds all catch locations from system/database", description = "This information is used in frontend to create catch locations dropdown")
-    public List<CityDto> getAllCities() {
-        List<CityDto> cities = atmService.getAllCities();
-        return cities;
-    }
+
