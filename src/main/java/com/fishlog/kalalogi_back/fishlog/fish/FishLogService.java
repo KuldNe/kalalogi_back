@@ -1,5 +1,7 @@
 package com.fishlog.kalalogi_back.fishlog.fish;
 
+import com.fishlog.kalalogi_back.domain.fish.Fish;
+import com.fishlog.kalalogi_back.domain.fish.FishService;
 import com.fishlog.kalalogi_back.domain.species.Species;
 import com.fishlog.kalalogi_back.domain.species.SpeciesMapper;
 import com.fishlog.kalalogi_back.domain.species.SpeciesService;
@@ -12,9 +14,12 @@ import java.util.List;
 public class FishLogService {
     @Resource
     private SpeciesService speciesService;
-
+    @Resource
+    private FishService fishService;
     @Resource
     private SpeciesMapper speciesMapper;
+    @Resource
+    private FishMapper fishMapper;
 
 
     public List<SpeciesDto> getAllSpecies() {
@@ -23,8 +28,7 @@ public class FishLogService {
     }
 
     public List<FishDto> getAllFish() {
-
-
-        return null;
+        List<Fish> fishies = fishService.getAllFish();
+        return fishMapper.toDtos(fishies);
     }
 }
