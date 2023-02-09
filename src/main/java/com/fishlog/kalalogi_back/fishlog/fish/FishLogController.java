@@ -1,7 +1,7 @@
 package com.fishlog.kalalogi_back.fishlog.fish;
 
 
-import com.fishlog.kalalogi_back.domain.species.SpeciesService;
+import com.fishlog.kalalogi_back.domain.waterbody.WaterbodyRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
