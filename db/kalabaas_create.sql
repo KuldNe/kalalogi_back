@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2023-02-09 08:37:28.456
+-- Last modification date: 2023-02-09 09:08:36.098
 
 -- tables
 -- Table: catch
@@ -36,7 +36,6 @@ CREATE TABLE role (
 CREATE TABLE species (
                          id serial  NOT NULL,
                          name varchar(255)  NOT NULL,
-                         name_latin varchar(255)  NOT NULL,
                          CONSTRAINT species_pk PRIMARY KEY (id)
 );
 
@@ -103,6 +102,4 @@ ALTER TABLE "user" ADD CONSTRAINT user_role
 ;
 
 -- End of file.
-
-SELECT * FROM "user"
 
