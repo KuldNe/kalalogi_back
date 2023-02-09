@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class LoginResponseDTO {
-    Integer userId;
-    String roleType;
+    private Integer userId;
+    private String roleType;
 }
