@@ -1,6 +1,6 @@
 package com.fishlog.kalalogi_back.domain.fish;
 
-import com.fishlog.kalalogi_back.Catch;
+import com.fishlog.kalalogi_back.domain.catches.Catch;
 import com.fishlog.kalalogi_back.domain.species.Species;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
