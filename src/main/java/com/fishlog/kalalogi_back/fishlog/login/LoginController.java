@@ -14,7 +14,6 @@ public class LoginController {
     @GetMapping("/login")
     @Operation(summary = "This service enables user to login", description = "Application checks user credentials throws error when incorrect provided")
     public LoginResponseDTO login(@RequestParam String username, @RequestParam String password) {
-
         return loginService.login(username, password);
     }
 
