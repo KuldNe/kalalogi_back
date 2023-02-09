@@ -28,11 +28,7 @@ public class FishLogController {
     }*/
 
 
-    @GetMapping("/fish/location")
-    @Operation(summary = "Find all fish locations from the database", description = "This is used for the location dropdown")
-    public List<LocationDto> getAllLocations() {
-        return locationService.getAllLocations();
-    }
+
 }
 
 
