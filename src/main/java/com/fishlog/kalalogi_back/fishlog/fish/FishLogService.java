@@ -21,4 +21,10 @@ public class FishLogService {
         List<Species> species = speciesService.findAllSpecies();
         return speciesMapper.toDtos(species);
     }
+
+    public List<FishDto> getAllFish() {
+
+
+        return null;
+    }
 }

@@ -21,6 +21,12 @@ public class FishLogController {
         return fishLogService.getAllSpecies();
     }
 
+    @GetMapping("/fish")
+    @Operation(summary = "Find all caught fish details from the database", description = "This is used to display fish caught")
+    public List<FishDto> getAllFIsh() {
+
+        return fishLogService.getAllFish();
+    }
 /*    @PostMapping("/catches")
     @Operation(summary = "Add date connected to current catch", description = "Adds date of catch to database")
     public void addDate(@RequestBody DateDto dateDto) {
