@@ -4,5 +4,6 @@ import java.util.List;
 
 public class LocationService {
     public static List<LocationDto> getAllLocations() {
+        return null;
     }
 }
