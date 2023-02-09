@@ -13,12 +13,8 @@ public class SpeciesService {
     @Resource
     private SpeciesRepository speciesRepository;
 
-    @Resource
-    private SpeciesMapper speciesMapper;
 
-
-    public List<SpeciesDto> getAllSpecies() {
-        List<Species> species = speciesRepository.findAll();
-        return speciesMapper.toDtos(species);
+    public List<Species> findAllSpecies() {
+        return speciesRepository.findAll();
     }
 }

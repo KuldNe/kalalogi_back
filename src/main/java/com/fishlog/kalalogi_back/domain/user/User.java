@@ -1,6 +1,6 @@
 package com.fishlog.kalalogi_back.domain.user;
 
-import com.fishlog.kalalogi_back.domain.role.Role;
+import com.fishlog.kalalogi_back.domain.user.role.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
