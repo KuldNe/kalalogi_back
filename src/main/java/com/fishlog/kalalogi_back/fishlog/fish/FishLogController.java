@@ -21,11 +21,7 @@ public class FishLogController {
         return fishLogService.getAllSpecies();
     }
 
-/*    @PostMapping("/catches")
-    @Operation(summary = "Add date connected to current catch", description = "Adds date of catch to database")
-    public void addDate(@RequestBody DateDto dateDto) {
 
-    }*/
 
 
 
