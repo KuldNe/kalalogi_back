@@ -1,6 +1,7 @@
 package com.fishlog.kalalogi_back.fishlog.location;
 
 import com.fishlog.kalalogi_back.domain.waterbody.Waterbody;
+import com.fishlog.kalalogi_back.domain.waterbody.WaterbodyMapper;
 import com.fishlog.kalalogi_back.domain.waterbody.WaterbodyService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
