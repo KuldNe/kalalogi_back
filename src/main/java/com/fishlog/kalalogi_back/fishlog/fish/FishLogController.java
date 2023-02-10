@@ -2,9 +2,12 @@ package com.fishlog.kalalogi_back.fishlog.fish;
 
 
 import com.fishlog.kalalogi_back.domain.waterbody.WaterbodyRepository;
+import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,11 +30,12 @@ public class FishLogController {
 
         return fishLogService.getAllFish();
     }
-/*    @PostMapping("/catches")
-    @Operation(summary = "Add date connected to current catch", description = "Adds date of catch to database")
-    public void addDate(@RequestBody DateDto dateDto) {
 
-    }*/
+    @PostMapping("/catch")
+    @Operation(summary = "Add new catch to DB", description = "")
+    public void addCatch(@RequestBody CatchDto catchDto) {
+        fishLogService.addCatch(catchDto);
+    }
 
 }
 

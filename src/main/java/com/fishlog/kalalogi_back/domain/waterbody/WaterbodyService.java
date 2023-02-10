@@ -16,4 +16,7 @@ public class WaterbodyService {
         return waterbodyRepository.findWaterbodies(Status.ACTIVE);
     }
 
+    public Waterbody findWaterbodyById(Integer waterbodyId) {
+        return waterbodyRepository.findById(waterbodyId).get();
+    }
 }
