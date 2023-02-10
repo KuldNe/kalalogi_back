@@ -1,6 +1,6 @@
 package com.fishlog.kalalogi_back.domain.fish;
 
-import com.fishlog.kalalogi_back.domain.catches.Catch;
+import com.fishlog.kalalogi_back.domain.catches.Acatch;
 import com.fishlog.kalalogi_back.domain.species.Species;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -27,16 +27,14 @@ public class Fish {
     private Boolean released = false;
 
     @Size(max = 1000)
-    @NotNull
-    @Column(name = "comment", nullable = false, length = 1000)
+    @Column(name = "comment", length = 1000)
     private String comment;
 
     @NotNull
     @Column(name = "public", nullable = false)
     private Boolean publicField = false;
 
-    @NotNull
-    @Column(name = "picture", nullable = false)
+    @Column(name = "picture")
     private byte[] picture;
 
     @NotNull
@@ -46,8 +44,8 @@ public class Fish {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "catch_id", nullable = false)
-    private Catch catchField;
+    @JoinColumn(name = "acatch_id", nullable = false)
+    private Acatch acatch;
 
     public Integer getId() {
         return id;
@@ -113,12 +111,12 @@ public class Fish {
         this.species = species;
     }
 
-    public Catch getCatchField() {
-        return catchField;
+    public Acatch getAcatch() {
+        return acatch;
     }
 
-    public void setCatchField(Catch catchField) {
-        this.catchField = catchField;
+    public void setAcatch(Acatch acatch) {
+        this.acatch = acatch;
     }
 
 }

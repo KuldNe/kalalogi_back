@@ -35,13 +35,13 @@ INSERT INTO public.species (id, name) VALUES (DEFAULT, 'teib');
 INSERT INTO public.species (id, name) VALUES (DEFAULT, 'karpkala');
 INSERT INTO public.species (id, name) VALUES (DEFAULT, 'rääbis');
 
-INSERT INTO public.catch (id, date, user_id, waterbody_id) VALUES (DEFAULT, '2023-02-09', 3, 1);
-INSERT INTO public.catch (id, date, user_id, waterbody_id) VALUES (DEFAULT, '2022-02-01', 4, 2);
-INSERT INTO public.catch (id, date, user_id, waterbody_id) VALUES (DEFAULT, '2022-09-01', 3, 3);
-INSERT INTO public.catch (id, date, user_id, waterbody_id) VALUES (DEFAULT, '2022-12-24', 4, 4);
+INSERT INTO public.acatch (id, date, user_id, waterbody_id) VALUES (DEFAULT, '2023-02-09', 3, 1);
+INSERT INTO public.acatch (id, date, user_id, waterbody_id) VALUES (DEFAULT, '2022-02-01', 4, 2);
+INSERT INTO public.acatch (id, date, user_id, waterbody_id) VALUES (DEFAULT, '2022-09-01', 3, 3);
+INSERT INTO public.acatch (id, date, user_id, waterbody_id) VALUES (DEFAULT, '2022-12-24', 4, 4);
 
-INSERT INTO public.fish (id, length, weight, released, comment, public, picture, species_id, catch_id) VALUES (DEFAULT, 10, 70, true, 'kuradi kilu, lendas tagasi', true, 'asd', 7, 1);
-INSERT INTO public.fish (id, length, weight, released, comment, public, picture, species_id, catch_id) VALUES (DEFAULT, 20, 200, false, 'hea snäkk', true, 'asd', 14, 2);
-INSERT INTO public.fish (id, length, weight, released, comment, public, picture, species_id, catch_id) VALUES (DEFAULT, 30, 1200, false, 'salakojhast võtsin, ei näita', false, 'asd', 23, 3);
-INSERT INTO public.fish (id, length, weight, released, comment, public, picture, species_id, catch_id) VALUES (DEFAULT, 80, 6500, false, 'Ahhsamait, vaadake seda', true, 'asd', 17, 4);
-INSERT INTO public.fish (id, length, weight, released, comment, public, picture, species_id, catch_id) VALUES (DEFAULT, 15, 220, false, 'ka suht ok', true, 'asd', 12, 4);
+INSERT INTO public.fish (id, length, weight, released, comment, public, picture, species_id, acatch_id) VALUES (DEFAULT, 10, 70, true, 'kuradi kilu, lendas tagasi', true, 'asd', 7, 1);
+INSERT INTO public.fish (id, length, weight, released, comment, public, picture, species_id, acatch_id) VALUES (DEFAULT, 20, 200, false, 'hea snäkk', true, 'asd', 14, 2);
+INSERT INTO public.fish (id, length, weight, released, comment, public, picture, species_id, acatch_id) VALUES (DEFAULT, 30, 1200, false, 'salakojhast võtsin, ei näita', false, 'asd', 23, 3);
+INSERT INTO public.fish (id, length, weight, released, comment, public, picture, species_id, acatch_id) VALUES (DEFAULT, 80, 6500, false, 'Ahhsamait, vaadake seda', true, 'asd', 17, 4);
+INSERT INTO public.fish (id, length, weight, released, comment, public, picture, species_id, acatch_id) VALUES (DEFAULT, 15, 220, false, 'ka suht ok', true, 'asd', 12, 4);

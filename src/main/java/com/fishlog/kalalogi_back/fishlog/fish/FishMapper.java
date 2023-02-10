@@ -9,9 +9,9 @@ import java.util.List;
 public interface FishMapper {
 
     @Mapping(source = "species.name", target = "speciesName")
-    @Mapping(source = "catchField.date", target = "date")
-    @Mapping(source = "catchField.waterbody.name", target = "locationName")
-    @Mapping(source = "catchField.user.username", target = "userName")
+    @Mapping(source = "acatch.date", target = "date")
+    @Mapping(source = "acatch.waterbody.name", target = "locationName")
+    @Mapping(source = "acatch.user.username", target = "userName")
     FishDto toDto(Fish fish);
 
     List<FishDto> toDtos(List<Fish> fishies);

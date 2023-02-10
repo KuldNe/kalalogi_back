@@ -1,14 +1,14 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2023-02-09 09:08:36.098
+-- Last modification date: 2023-02-10 08:00:22.781
 
 -- tables
--- Table: catch
-CREATE TABLE catch (
-                       id serial  NOT NULL,
-                       date date  NOT NULL,
-                       user_id int  NOT NULL,
-                       waterbody_id int  NOT NULL,
-                       CONSTRAINT catch_pk PRIMARY KEY (id)
+-- Table: acatch
+CREATE TABLE acatch (
+                        id serial  NOT NULL,
+                        date date  NOT NULL,
+                        user_id int  NOT NULL,
+                        waterbody_id int  NOT NULL,
+                        CONSTRAINT acatch_pk PRIMARY KEY (id)
 );
 
 -- Table: fish
@@ -17,11 +17,11 @@ CREATE TABLE fish (
                       length int  NOT NULL,
                       weight int  NOT NULL,
                       released boolean  NOT NULL,
-                      comment varchar(1000)  NOT NULL,
+                      comment varchar(1000)  NULL,
                       public boolean  NOT NULL,
-                      picture bytea  NOT NULL,
+                      picture bytea  NULL,
                       species_id int  NOT NULL,
-                      catch_id int  NOT NULL,
+                      acatch_id int  NOT NULL,
                       CONSTRAINT fish_pk PRIMARY KEY (id)
 );
 
@@ -61,26 +61,26 @@ CREATE TABLE waterbody (
 );
 
 -- foreign keys
--- Reference: catch_user (table: catch)
-ALTER TABLE catch ADD CONSTRAINT catch_user
-    FOREIGN KEY (user_id)
-        REFERENCES "user" (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
--- Reference: catch_waterbody (table: catch)
-ALTER TABLE catch ADD CONSTRAINT catch_waterbody
+-- Reference: acatch_waterbody (table: acatch)
+ALTER TABLE acatch ADD CONSTRAINT acatch_waterbody
     FOREIGN KEY (waterbody_id)
         REFERENCES waterbody (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
 
--- Reference: fish_catch (table: fish)
-ALTER TABLE fish ADD CONSTRAINT fish_catch
-    FOREIGN KEY (catch_id)
-        REFERENCES catch (id)
+-- Reference: catch_user (table: acatch)
+ALTER TABLE acatch ADD CONSTRAINT catch_user
+    FOREIGN KEY (user_id)
+        REFERENCES "user" (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: fish_acatch (table: fish)
+ALTER TABLE fish ADD CONSTRAINT fish_acatch
+    FOREIGN KEY (acatch_id)
+        REFERENCES acatch (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
