@@ -13,4 +13,7 @@ public class AcatchService {
         acatchRepository.save(acatch);
     }
 
+    public Acatch findByCatchId(Integer acatchId) {
+        return acatchRepository.findById(acatchId).get();
+    }
 }

@@ -67,7 +67,18 @@ public class FishLogService {
 
       acatchService.saveAcatch(acatch);
 
+    }
 
+    public void addFish(FishDto fishDto) {
+        Fish fish = fishMapper.toEntity(fishDto);
+
+        Acatch acatch = acatchService.findByCatchId(fishDto.getAcatchId());
+        fish.setAcatch(acatch);
+
+        Species species = speciesService.findBySpeciesId(fishDto.getSpeciesId());
+        fish.setSpecies(species);
+
+        fishService.saveFish(fish);
 
     }
 }

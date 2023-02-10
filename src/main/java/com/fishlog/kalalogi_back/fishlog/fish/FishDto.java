@@ -10,7 +10,12 @@ public class FishDto {
    private Integer weight;
    private String date;
    private String locationName;
-   private boolean released;
+   private Boolean released;
    private String comment;
    private String userName;
+   private Boolean isPublic;
+   private String picture;
+   private Integer acatchId;
+   private Integer speciesId;
+
 };

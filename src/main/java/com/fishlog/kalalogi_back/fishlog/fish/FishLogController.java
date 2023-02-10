@@ -37,6 +37,12 @@ public class FishLogController {
         fishLogService.addCatch(catchDto);
     }
 
+    @PostMapping("/fish")
+    @Operation (summary = "Add caught fish details to database", description = "???")
+        public void addFish(@RequestBody FishDto fishDto) {
+        fishLogService.addFish(fishDto);
+    }
+
 }
 
 

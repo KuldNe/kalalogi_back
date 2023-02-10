@@ -17,4 +17,8 @@ public class SpeciesService {
     public List<Species> findAllSpecies() {
         return speciesRepository.findAll();
     }
+
+    public Species findBySpeciesId(Integer speciesId) {
+        return speciesRepository.findById(speciesId).get();
+    }
 }
