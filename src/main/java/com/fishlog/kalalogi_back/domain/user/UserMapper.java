@@ -1,6 +1,7 @@
-package com.fishlog.kalalogi_back.fishlog.login;
+package com.fishlog.kalalogi_back.domain.user;
 
 import com.fishlog.kalalogi_back.domain.user.User;
+import com.fishlog.kalalogi_back.fishlog.login.LoginResponseDTO;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")

@@ -1,7 +1,10 @@
 package com.fishlog.kalalogi_back.domain.catches;
 
+import com.fishlog.kalalogi_back.fishlog.Status;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AcatchService {
@@ -15,5 +18,9 @@ public class AcatchService {
 
     public Acatch findByCatchId(Integer acatchId) {
         return acatchRepository.findById(acatchId).get();
+    }
+
+    public List<Acatch> findCatchesbyUser(Integer userId) {
+        return acatchRepository.findCatchesbyUser(userId, Status.ACTIVE);
     }
 }

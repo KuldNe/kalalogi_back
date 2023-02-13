@@ -1,6 +1,7 @@
 package com.fishlog.kalalogi_back.fishlog.login;
 
 import com.fishlog.kalalogi_back.domain.user.User;
+import com.fishlog.kalalogi_back.domain.user.UserMapper;
 import com.fishlog.kalalogi_back.domain.user.UserService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;

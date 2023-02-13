@@ -4,6 +4,7 @@ import com.fishlog.kalalogi_back.domain.user.User;
 import com.fishlog.kalalogi_back.domain.waterbody.Waterbody;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
@@ -28,6 +29,11 @@ public class Acatch {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "waterbody_id", nullable = false)
     private Waterbody waterbody;
+
+    @Size(max = 1)
+    @NotNull
+    @Column(name = "status", nullable = false, length = 1)
+    private String status;
 
     public Integer getId() {
         return id;
@@ -59,6 +65,14 @@ public class Acatch {
 
     public void setWaterbody(Waterbody waterbody) {
         this.waterbody = waterbody;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

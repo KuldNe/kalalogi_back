@@ -37,6 +37,11 @@ public class Fish {
     @Column(name = "picture")
     private byte[] picture;
 
+    @Size(max = 1)
+    @NotNull
+    @Column(name = "status", nullable = false, length = 1)
+    private String status;
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "species_id", nullable = false)
@@ -101,6 +106,14 @@ public class Fish {
 
     public void setPicture(byte[] picture) {
         this.picture = picture;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Species getSpecies() {

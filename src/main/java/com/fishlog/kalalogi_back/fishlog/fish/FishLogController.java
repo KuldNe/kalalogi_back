@@ -1,14 +1,11 @@
 package com.fishlog.kalalogi_back.fishlog.fish;
 
 
-import com.fishlog.kalalogi_back.domain.waterbody.WaterbodyRepository;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
+import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,10 +23,24 @@ public class FishLogController {
 
     @GetMapping("/fish")
     @Operation(summary = "Find all caught fish details from the database", description = "This is used to display fish caught")
-    public List<FishDto> getAllFIsh() {
+    public List<FishViewDto> getAllFIsh() {
 
         return fishLogService.getAllFish();
     }
+
+    @GetMapping ("/catches")
+    @Operation (summary = "Get user catches from database", description = "blabla")
+    public List <CatchViewDto> getUserCatches (@RequestParam Integer userId) {
+        return fishLogService.getUserCatches(userId);
+
+    }
+
+    @GetMapping( "/catch")
+    @Operation(summary = "Get one catch info by catch Id", description = "Get one catch info for adding a fish to the catch")
+    public CatchViewDto getCatch(@RequestParam Integer catchId) {
+        return fishLogService.getCatch(catchId);
+    }
+
 
     @PostMapping("/catch")
     @Operation (summary = "Add new catch to database", description = "????")
