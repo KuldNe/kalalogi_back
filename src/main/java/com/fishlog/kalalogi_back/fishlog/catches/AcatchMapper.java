@@ -5,7 +5,7 @@ import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface AcatchMapper {
-
+    @Mapping(source = "date", target = "date")
     Acatch toEntity(CatchDto catchDto);
 
 }

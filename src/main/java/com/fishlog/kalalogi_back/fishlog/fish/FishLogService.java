@@ -14,6 +14,7 @@ import com.fishlog.kalalogi_back.domain.waterbody.WaterbodyService;
 import com.fishlog.kalalogi_back.fishlog.catches.AcatchMapper;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import jakarta.annotation.Resource;
+import org.mapstruct.control.MappingControl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,17 +26,21 @@ public class FishLogService {
     @Resource
     private FishService fishService;
     @Resource
-    private UserService userService;
-    @Resource
-    private WaterbodyService waterbodyService;
-    @Resource
-    private AcatchService acatchService;
-    @Resource
     private SpeciesMapper speciesMapper;
     @Resource
-    private AcatchMapper acatchMapper;
-    @Resource
     private FishMapper fishMapper;
+
+    @Resource
+    private AcatchMapper acatchMapper;
+
+    @Resource
+    private UserService userService;
+
+    @Resource
+    private WaterbodyService waterbodyService;
+
+    @Resource
+    private AcatchService acatchService;
 
 
     public List<SpeciesDto> getAllSpecies() {
@@ -48,14 +53,32 @@ public class FishLogService {
         return fishMapper.toDtos(fishies);
     }
 
+
+
     public void addCatch(CatchDto catchDto) {
         Acatch acatch = acatchMapper.toEntity(catchDto);
 
-        acatch.setUser(userService.findUserById(catchDto.getUserId()));
+      User user = userService.findUserById(catchDto.getUserId());
+      acatch.setUser(user);
 
-        Waterbody waterbody = waterbodyService.findWaterbodyById(catchDto.getWaterbodyId());
-        acatch.setWaterbody(waterbody);
+      Waterbody waterbody = waterbodyService.findWaterbodyId(catchDto.getWaterbodyId());
 
-        acatchService.saveAcatch(acatch);
+      acatch.setWaterbody(waterbody);
+
+      acatchService.saveAcatch(acatch);
+
+    }
+
+    public void addFish(FishDto fishDto) {
+        Fish fish = fishMapper.toEntity(fishDto);
+
+        Acatch acatch = acatchService.findByCatchId(fishDto.getAcatchId());
+        fish.setAcatch(acatch);
+
+        Species species = speciesService.findBySpeciesId(fishDto.getSpeciesId());
+        fish.setSpecies(species);
+
+        fishService.saveFish(fish);
+
     }
 }

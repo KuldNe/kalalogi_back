@@ -5,8 +5,11 @@ import lombok.Data;
 @Data
 public class CatchDto {
 
-    private String date;
-    private Integer userId;
-    private Integer waterbodyId;
+        private String date;
+
+        private Integer userId;
+
+        private Integer waterbodyId;
+
 
 }

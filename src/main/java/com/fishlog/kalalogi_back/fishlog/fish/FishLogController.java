@@ -32,9 +32,15 @@ public class FishLogController {
     }
 
     @PostMapping("/catch")
-    @Operation(summary = "Add new catch to DB", description = "")
-    public void addCatch(@RequestBody CatchDto catchDto) {
+    @Operation (summary = "Add new catch to database", description = "????")
+    public void addCatch(@RequestBody CatchDto catchDto){
         fishLogService.addCatch(catchDto);
+    }
+
+    @PostMapping("/fish")
+    @Operation (summary = "Add caught fish details to database", description = "???")
+        public void addFish(@RequestBody FishDto fishDto) {
+        fishLogService.addFish(fishDto);
     }
 
 }

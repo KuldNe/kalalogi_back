@@ -15,4 +15,9 @@ public class FishService {
     public List<Fish> getAllFish() {
         return fishRepository.findPublicFish(true, Status.ACTIVE);
     }
+
+
+    public void saveFish(Fish fish) {
+        fishRepository.save(fish);
+    }
 }

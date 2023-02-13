@@ -20,7 +20,7 @@ public class UserService {
         return Validator.getValidUser(optionalUser);
     }
 
-    public User findUserById(Integer userId){
+    public User findUserById(Integer userId) {
         return userRepository.findById(userId).get();
     }
 }
