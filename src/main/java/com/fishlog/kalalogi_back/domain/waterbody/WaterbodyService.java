@@ -13,10 +13,19 @@ public class WaterbodyService {
     private WaterbodyRepository waterbodyRepository;
 
     public List<Waterbody> findAllWaterbodies() {
+
         return waterbodyRepository.findWaterbodies(Status.ACTIVE);
     }
 
     public Waterbody findWaterbodyId(Integer waterbodyId) {
+
         return waterbodyRepository.findById(waterbodyId).get();
     }
+
+    public void saveWaterbody(Waterbody waterbody) {
+
+        waterbodyRepository.save(waterbody);
+    }
+
+
 }
