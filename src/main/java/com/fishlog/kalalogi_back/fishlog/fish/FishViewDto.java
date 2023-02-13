@@ -11,9 +11,9 @@ public class FishViewDto {
    private String date;
    private String locationName;
    private Boolean released;
+   private Boolean isPublic;
    private String comment;
    private String userName;
-   private Boolean isPublic;
    private String picture;
 
 };

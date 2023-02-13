@@ -13,7 +13,7 @@ public class FishService {
 
 
     public List<Fish> getAllFish() {
-        return fishRepository.findPublicFish(true, Status.ACTIVE);
+        return fishRepository.findPublicFish(true, Status.ACTIVE, Status.ACTIVE, Status.ACTIVE);
     }
 
 

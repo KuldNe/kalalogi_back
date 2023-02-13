@@ -14,5 +14,4 @@ public class FishDto {
     private Boolean isPublic;
     private String picture;
 
-
 }

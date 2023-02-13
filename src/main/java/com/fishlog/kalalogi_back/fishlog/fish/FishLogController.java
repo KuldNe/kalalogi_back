@@ -28,19 +28,19 @@ public class FishLogController {
         return fishLogService.getAllFish();
     }
 
-    @GetMapping ("/catches")
-    @Operation (summary = "Get user catches from database", description = "blabla")
-    public List <CatchViewDto> getUserCatches (@RequestParam Integer userId) {
-        return fishLogService.getUserCatches(userId);
+    @GetMapping("/catches")
+    @Operation (summary = "Get user catches from DB", description = "????")
+    public List<CatchViewDto> getUserCatches (@RequestParam Integer userId) {
 
+        return fishLogService.getUserCatches(userId);
     }
 
-    @GetMapping( "/catch")
-    @Operation(summary = "Get one catch info by catch Id", description = "Get one catch info for adding a fish to the catch")
+    @GetMapping("/catch")
+    @Operation (summary = "Get one catch info by Id", description = "Get one catch info for adding a fish to the catch")
     public CatchViewDto getCatch(@RequestParam Integer catchId) {
+
         return fishLogService.getCatch(catchId);
     }
-
 
     @PostMapping("/catch")
     @Operation (summary = "Add new catch to database", description = "????")

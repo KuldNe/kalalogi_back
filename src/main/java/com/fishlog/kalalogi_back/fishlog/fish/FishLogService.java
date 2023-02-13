@@ -84,13 +84,14 @@ public class FishLogService {
     }
 
     public List<CatchViewDto> getUserCatches(Integer userId) {
-        List<Acatch> catches = acatchService.findCatchesbyUser(userId);
+        List<Acatch> catches = acatchService.findCatchesByUser(userId);
 
-        return acatchMapper.toDtos(catches);
+    return acatchMapper.toDtos(catches);
     }
 
     public CatchViewDto getCatch(Integer catchId) {
         Acatch acatch = acatchService.findByCatchId(catchId);
+
         return acatchMapper.toDto(acatch);
     }
 }

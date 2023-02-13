@@ -20,7 +20,8 @@ public class AcatchService {
         return acatchRepository.findById(acatchId).get();
     }
 
-    public List<Acatch> findCatchesbyUser(Integer userId) {
-        return acatchRepository.findCatchesbyUser(userId, Status.ACTIVE);
+    public List<Acatch> findCatchesByUser(Integer userId) {
+
+        return acatchRepository.findCatchesByUser(userId, Status.ACTIVE);
     }
 }

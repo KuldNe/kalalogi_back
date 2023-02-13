@@ -8,5 +8,6 @@ import java.util.List;
 public interface AcatchRepository extends JpaRepository<Acatch, Integer> {
 
     @Query("select a from Acatch a where a.user.id = ?1 and a.status = ?2")
-    List<Acatch> findCatchesbyUser(Integer id, String status);
+    List<Acatch> findCatchesByUser(Integer id, String status);
+
 }

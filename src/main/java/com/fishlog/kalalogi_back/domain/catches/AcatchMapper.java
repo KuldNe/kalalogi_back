@@ -10,9 +10,11 @@ import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface AcatchMapper {
-    @Mapping(source = "date", target = "date")
+
     @Mapping(constant = Status.ACTIVE, target = "status")
+    @Mapping(source = "date", target = "date")
     Acatch toEntity(CatchDto catchDto);
+
     @Mapping(source = "id", target = "catchId")
     @Mapping(source = "date", target = "catchDate")
     @Mapping(source = "waterbody.id", target = "waterbodyId")
@@ -22,5 +24,6 @@ public interface AcatchMapper {
     CatchViewDto toDto(Acatch acatch);
 
     List<CatchViewDto> toDtos(List<Acatch> catches);
+
 
 }
