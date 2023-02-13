@@ -37,6 +37,11 @@ public class Fish {
     @Column(name = "picture")
     private byte[] picture;
 
+    @Size(max = 1)
+    @NotNull
+    @Column(name = "status", nullable = false, length = 1)
+    private String status;
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "species_id", nullable = false)
@@ -46,11 +51,6 @@ public class Fish {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "acatch_id", nullable = false)
     private Acatch acatch;
-
-    @Size(max = 1)
-    @NotNull
-    @Column(name = "status", nullable = false, length = 1)
-    private String status;
 
     public Integer getId() {
         return id;

@@ -19,4 +19,10 @@ public class WaterbodyService {
     public Waterbody findWaterbodyId(Integer waterbodyId) {
         return waterbodyRepository.findById(waterbodyId).get();
     }
+
+    public void saveWaterbody(Waterbody waterbody) {
+        waterbodyRepository.save(waterbody);
+    }
+
+
 }
