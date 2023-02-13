@@ -8,6 +8,7 @@ CREATE TABLE acatch (
                         date date  NOT NULL,
                         user_id int  NOT NULL,
                         waterbody_id int  NOT NULL,
+                        status char(1)  NOT NULL,
                         CONSTRAINT acatch_pk PRIMARY KEY (id)
 );
 
@@ -22,6 +23,7 @@ CREATE TABLE fish (
                       picture bytea  NULL,
                       species_id int  NOT NULL,
                       acatch_id int  NOT NULL,
+                      status char(1)  NOT NULL,
                       CONSTRAINT fish_pk PRIMARY KEY (id)
 );
 
