@@ -8,6 +8,6 @@ public class LocationDto {
 
    private Integer locationId;
    private String locationName;
-   private String latitude;
-   private String longitude;
+   private Float latitude;
+   private Float longitude;
 }

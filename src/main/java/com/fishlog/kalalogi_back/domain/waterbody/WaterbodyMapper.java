@@ -1,6 +1,7 @@
 package com.fishlog.kalalogi_back.domain.waterbody;
 
 import com.fishlog.kalalogi_back.domain.waterbody.Waterbody;
+import com.fishlog.kalalogi_back.fishlog.Status;
 import com.fishlog.kalalogi_back.fishlog.location.LocationDto;
 import org.mapstruct.*;
 
@@ -16,4 +17,11 @@ public interface WaterbodyMapper {
     LocationDto toDto(Waterbody waterbody);
 
     List<LocationDto> toDtos(List<Waterbody> waterbodies);
+
+
+    @Mapping(source = "locationName", target = "name")
+    @Mapping(source = "latitude", target = "latitude")
+    @Mapping(source = "longitude", target = "longitude")
+    @Mapping(constant = Status.ACTIVE, target = "status")
+    Waterbody toEntity(LocationDto locationDto);
 }

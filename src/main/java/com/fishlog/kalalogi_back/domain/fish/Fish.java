@@ -52,11 +52,6 @@ public class Fish {
     @JoinColumn(name = "acatch_id", nullable = false)
     private Acatch acatch;
 
-    @Size(max = 1)
-    @NotNull
-    @Column(name = "status", nullable = false, length = 1)
-    private String status;
-
     public Integer getId() {
         return id;
     }
@@ -111,14 +106,6 @@ public class Fish {
 
     public void setPicture(byte[] picture) {
         this.picture = picture;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Species getSpecies() {
