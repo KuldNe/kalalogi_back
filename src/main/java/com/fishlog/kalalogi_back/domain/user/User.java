@@ -36,7 +36,7 @@ public class User {
     @Size(max = 255)
     @NotNull
     @Column(name = "e_mail", nullable = false)
-    private String eMail;
+    private String EMail;
 
     public Integer getId() {
         return id;
@@ -79,11 +79,11 @@ public class User {
     }
 
     public String getEMail() {
-        return eMail;
+        return EMail;
     }
 
-    public void setEMail(String eMail) {
-        this.eMail = eMail;
+    public void setEMail(String email) {
+        this.EMail = email;
     }
 
 }

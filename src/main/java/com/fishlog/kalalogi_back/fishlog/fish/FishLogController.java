@@ -1,12 +1,10 @@
 package com.fishlog.kalalogi_back.fishlog.fish;
 
 
-import com.fishlog.kalalogi_back.domain.catches.Acatch;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
-import jakarta.transaction.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,7 +45,6 @@ public class FishLogController {
     @PostMapping("/catch")
     @Operation (summary = "Add new catch to database", description = "????")
     public void addCatch(@RequestBody CatchDto catchDto){
-
         fishLogService.addCatch(catchDto);
     }
 
@@ -58,12 +55,12 @@ public class FishLogController {
     }
 
     @PutMapping("/fish")
-    @Operation(summary = "Update user catch information to db", description = "")
+    @Operation(summary = "Update user catch information in database", description = "????")
     public void editFish(@RequestParam Integer fishId, @RequestBody FishDto fishDto) {
-        //mis parameetri alusel hakkame filtreerima catchi
 
-        return acatchMapper.toDto(acatch);
     }
+
+
 }
 
 
