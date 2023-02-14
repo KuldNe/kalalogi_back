@@ -16,6 +16,7 @@ import com.fishlog.kalalogi_back.domain.catches.AcatchMapper;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
 import jakarta.annotation.Resource;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -94,4 +95,14 @@ public class FishLogService {
 
         return acatchMapper.toDto(acatch);
     }
+
+
+    public Fish findFish(Integer fishId) {
+        return fishRepository.findById(fishId);
+        fishMapper.updateFish(fish);
+    }
+}
+
+
+
 }

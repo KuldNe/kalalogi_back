@@ -9,7 +9,7 @@ import com.fishlog.kalalogi_back.util.PictureUtil;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring", imports =  PictureUtil.class)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring", imports = PictureUtil.class)
 public interface FishMapper {
 
     @Mapping(source = "species.name", target = "speciesName")
@@ -40,4 +40,13 @@ public interface FishMapper {
         return bytes;
     }
 
+    @InheritConfiguration(name = "toEntity",)
+    void updateFish(@MappingTarget Fish fish, FishDto fishDto);
+
+    Fish toEntity1(com.fishlog.kalalogi_back.domain.fish.FishDto fishDto);
+
+    com.fishlog.kalalogi_back.domain.fish.FishDto toDto1(Fish fish);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    Fish partialUpdate(com.fishlog.kalalogi_back.domain.fish.FishDto fishDto, @MappingTarget Fish fish);
 }
