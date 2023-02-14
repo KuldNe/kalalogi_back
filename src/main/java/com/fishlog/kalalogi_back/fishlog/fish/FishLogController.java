@@ -68,6 +68,18 @@ public class FishLogController {
         fishLogService.editFish(fishId, fishDto);
     }
 
+    @DeleteMapping("/catch")
+    @Operation(summary = "Deactivates catch in the database", description = "It does.")
+    public void deleteCatch(@RequestParam Integer catchId) {
+        fishLogService.deleteCatch(catchId);
+    }
+
+    @DeleteMapping("/fish")
+    @Operation(summary = "Deactivates inserted fish in the database.", description = "???")
+    public void deleteFish(@RequestParam Integer fishId) {
+        fishLogService.deleteFish(fishId);
+    }
+
 
 }
 

@@ -13,6 +13,7 @@ import com.fishlog.kalalogi_back.domain.user.UserService;
 import com.fishlog.kalalogi_back.domain.waterbody.Waterbody;
 import com.fishlog.kalalogi_back.domain.waterbody.WaterbodyService;
 import com.fishlog.kalalogi_back.domain.catches.AcatchMapper;
+import com.fishlog.kalalogi_back.fishlog.Status;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
 import jakarta.annotation.Resource;
@@ -111,5 +112,19 @@ public class FishLogService {
 
         acatchMapper.updateCatch(acatch, catchViewDto);
         acatchService.saveAcatch(acatch);
+    }
+
+
+    public void deleteCatch(Integer catchId) {
+        Acatch acatch = acatchService.findByCatchId(catchId);
+        acatch.setStatus(Status.DEACTIVATED);
+        acatchService.saveAcatch(acatch);
+    }
+
+
+    public void deleteFish(Integer fishId) {
+        Fish fish = fishService.findFish(fishId);
+        fish.setStatus(Status.DEACTIVATED);
+        fishService.saveFish(fish);
     }
 }
