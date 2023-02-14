@@ -19,7 +19,6 @@ public interface WaterbodyMapper {
     List<LocationDto> toDtos(List<Waterbody> waterbodies);
 
 
-    @Mapping(source = "locationId", target = "id")
     @Mapping(source = "locationName", target = "name")
     @Mapping(source = "latitude", target = "latitude")
     @Mapping(source = "longitude", target = "longitude")

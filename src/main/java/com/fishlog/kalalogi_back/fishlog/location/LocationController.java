@@ -18,15 +18,14 @@ public class LocationController {
     @GetMapping("/waterbodies")
     @Operation(summary = "Find all waterbodies from the database", description = "This is used for the waterbodies dropdown")
     public List<LocationDto> getAllLocations() {
-
         return locationService.getAllLocations();
     }
 
     @PostMapping ("/waterbodies")
-    @Operation(summary = "Add new waterbody to db", description = "?")
+    @Operation (summary = "Add new waterbody to database", description = "?????")
     public void addWaterbody(@RequestBody LocationDto locationDto) {
         locationService.addWaterbody(locationDto);
-
     }
+
 
 }

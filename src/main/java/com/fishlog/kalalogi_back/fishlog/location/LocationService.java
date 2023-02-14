@@ -1,6 +1,5 @@
 package com.fishlog.kalalogi_back.fishlog.location;
 
-import com.fishlog.kalalogi_back.domain.fish.Fish;
 import com.fishlog.kalalogi_back.domain.waterbody.Waterbody;
 import com.fishlog.kalalogi_back.domain.waterbody.WaterbodyMapper;
 import com.fishlog.kalalogi_back.domain.waterbody.WaterbodyRepository;
@@ -16,6 +15,11 @@ public class LocationService {
     private WaterbodyService waterbodyService;
     @Resource
     private WaterbodyMapper waterbodyMapper;
+    private final WaterbodyRepository waterbodyRepository;
+
+    public LocationService(WaterbodyRepository waterbodyRepository) {
+        this.waterbodyRepository = waterbodyRepository;
+    }
 
     public List<LocationDto> getAllLocations() {
         List<Waterbody> waterbodies = waterbodyService.findAllWaterbodies();
@@ -25,8 +29,9 @@ public class LocationService {
     }
 
     public void addWaterbody(LocationDto locationDto) {
+
         Waterbody waterbody = waterbodyMapper.toEntity(locationDto);
-        
+
         waterbodyService.saveWaterbody(waterbody);
 
     }
