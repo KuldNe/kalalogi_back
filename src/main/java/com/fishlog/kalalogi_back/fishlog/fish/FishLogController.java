@@ -55,11 +55,17 @@ public class FishLogController {
     }
 
 
+    @PutMapping("/catch")
+    @Operation(summary = "Update catch information in database", description = "???????")
+    public void editCatch(@RequestParam Integer catchId, @RequestBody CatchViewDto catchViewDto) {
+        fishLogService.editCatch(catchId, catchViewDto);
+    }
+
+
     @PutMapping("/fish")
-    @Operation(summary = "Update user catch information in database", description = "????")
+    @Operation(summary = "Update fish information in database", description = "????")
     public void editFish(@RequestParam Integer fishId, @RequestBody FishDto fishDto) {
         fishLogService.editFish(fishId, fishDto);
-
     }
 
 
