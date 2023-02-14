@@ -25,5 +25,9 @@ public interface AcatchMapper {
 
     List<CatchViewDto> toDtos(List<Acatch> catches);
 
-
+    @Mapping(source = "catchDate", target = "date")
+    @Mapping(source = "waterbodyName", target = "waterbody.name")
+    Acatch updateEntity(CatchViewDto catchViewDto);
+    @InheritConfiguration (name = "updateEntity")
+    void updateCatch(@MappingTarget Acatch acatch, CatchViewDto catchViewDto);
 }
