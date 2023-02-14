@@ -98,7 +98,8 @@ public class FishLogService {
 
     public void editFish(Integer fishId, FishDto fishDto) {
         Fish fish = fishService.findFish(fishId);
-        fishMapper.updateFish(fish, fishDto)
+        fishMapper.updateFish(fish, fishDto);
+        fishService.saveFish(fish);
 
     }
 
