@@ -40,4 +40,6 @@ public interface FishMapper {
         return bytes;
     }
 
+    @InheritConfiguration (name = "toEntity")
+    void updateFish(@MappingTarget Fish fish, FishDto fishDto);
 }

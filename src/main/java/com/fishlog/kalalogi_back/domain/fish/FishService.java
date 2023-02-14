@@ -5,6 +5,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FishService {
@@ -19,5 +20,9 @@ public class FishService {
 
     public void saveFish(Fish fish) {
         fishRepository.save(fish);
+    }
+
+    public Fish findFish(Integer fishId) {
+        return fishRepository.findById(fishId).get();
     }
 }

@@ -54,6 +54,13 @@ public class FishLogController {
         fishLogService.addFish(fishDto);
     }
 
+    @PutMapping("/fish")
+    @Operation(summary = "Update user catch information in database", description = "????")
+    public void editFish(@RequestParam Integer fishId, @RequestBody FishDto fishDto) {
+
+    }
+
+
 }
 
 
