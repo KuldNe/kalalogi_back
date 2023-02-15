@@ -23,13 +23,9 @@ public class RegisterService {
     public void addUser(RegisterDto registerDto) {
 
         User user = userMapper.registerEntity(registerDto);
+        user.setRole(roleService.getByRoleId(2));
 
-        Role role = roleService.getByRoleId(2);
-
-        user.setRole(role);
 
         userService.saveUser(user);
-
-
     }
 }
