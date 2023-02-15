@@ -1,9 +1,11 @@
 package com.fishlog.kalalogi_back.domain.catches;
 
 import com.fishlog.kalalogi_back.domain.catches.Acatch;
+import com.fishlog.kalalogi_back.domain.fish.Fish;
 import com.fishlog.kalalogi_back.fishlog.Status;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
+import com.fishlog.kalalogi_back.fishlog.fish.FishDto;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -25,8 +27,8 @@ public interface AcatchMapper {
 
     List<CatchViewDto> toDtos(List<Acatch> catches);
 
-    @Mapping(source = "date", target = "date")
-    Acatch updateEntity(CatchDto catchDto);
-    @InheritConfiguration (name = "updateEntity")
+    @InheritConfiguration (name = "toEntity")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateCatch(@MappingTarget Acatch acatch, CatchDto catchDto);
+
 }

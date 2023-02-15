@@ -104,24 +104,23 @@ public class FishLogService {
 
     }
 
-
     public void editCatch(Integer catchId, CatchDto catchDto) {
         Acatch acatch = acatchService.findByCatchId(catchId);
 
         Waterbody waterbody = waterbodyService.findWaterbodyId(catchDto.getWaterbodyId());
         acatch.setWaterbody(waterbody);
 
-
         acatchMapper.updateCatch(acatch, catchDto);
         acatchService.saveAcatch(acatch);
     }
+
 
     public void deleteCatch(Integer catchId) {
         Acatch acatch = acatchService.findByCatchId(catchId);
         acatch.setStatus(Status.DEACTIVATED);
         acatchService.saveAcatch(acatch);
-
     }
+
 
     public void deleteFish(Integer fishId) {
         Fish fish = fishService.findFish(fishId);
