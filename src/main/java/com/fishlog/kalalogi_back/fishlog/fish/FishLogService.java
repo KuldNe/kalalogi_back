@@ -13,10 +13,12 @@ import com.fishlog.kalalogi_back.domain.user.UserService;
 import com.fishlog.kalalogi_back.domain.waterbody.Waterbody;
 import com.fishlog.kalalogi_back.domain.waterbody.WaterbodyService;
 import com.fishlog.kalalogi_back.domain.catches.AcatchMapper;
+import com.fishlog.kalalogi_back.fishlog.Status;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -93,5 +95,36 @@ public class FishLogService {
         Acatch acatch = acatchService.findByCatchId(catchId);
 
         return acatchMapper.toDto(acatch);
+    }
+
+    public void editFish(Integer fishId, FishDto fishDto) {
+        Fish fish = fishService.findFish(fishId);
+        fishMapper.updateFish(fish, fishDto);
+        fishService.saveFish(fish);
+
+    }
+
+    public void editCatch(Integer catchId, CatchDto catchDto) {
+        Acatch acatch = acatchService.findByCatchId(catchId);
+
+        Waterbody waterbody = waterbodyService.findWaterbodyId(catchDto.getWaterbodyId());
+        acatch.setWaterbody(waterbody);
+
+        acatchMapper.updateCatch(acatch, catchDto);
+        acatchService.saveAcatch(acatch);
+    }
+
+
+    public void deleteCatch(Integer catchId) {
+        Acatch acatch = acatchService.findByCatchId(catchId);
+        acatch.setStatus(Status.DEACTIVATED);
+        acatchService.saveAcatch(acatch);
+    }
+
+
+    public void deleteFish(Integer fishId) {
+        Fish fish = fishService.findFish(fishId);
+        fish.setStatus(Status.DEACTIVATED);
+        fishService.saveFish(fish);
     }
 }

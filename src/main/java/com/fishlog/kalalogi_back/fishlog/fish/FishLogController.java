@@ -54,6 +54,33 @@ public class FishLogController {
         fishLogService.addFish(fishDto);
     }
 
+
+    @PutMapping("/catch")
+    @Operation(summary = "Update catch information in database", description = "???????")
+    public void editCatch(@RequestParam Integer catchId, @RequestBody CatchDto catchDto) {
+        fishLogService.editCatch(catchId, catchDto);
+    }
+
+
+    @PutMapping("/fish")
+    @Operation(summary = "Update fish information in database", description = "????")
+    public void editFish(@RequestParam Integer fishId, @RequestBody FishDto fishDto) {
+        fishLogService.editFish(fishId, fishDto);
+    }
+
+    @DeleteMapping("/catch")
+    @Operation(summary = "Deactivates catch in the database", description = "It does.")
+    public void deleteCatch(@RequestParam Integer catchId) {
+        fishLogService.deleteCatch(catchId);
+    }
+
+    @DeleteMapping("/fish")
+    @Operation(summary = "Deactivates inserted fish in the database.", description = "???")
+    public void deleteFish(@RequestParam Integer fishId) {
+        fishLogService.deleteFish(fishId);
+    }
+
+
 }
 
 

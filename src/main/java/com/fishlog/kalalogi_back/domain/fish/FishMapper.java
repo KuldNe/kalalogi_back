@@ -40,4 +40,7 @@ public interface FishMapper {
         return bytes;
     }
 
+    @InheritConfiguration (name = "toEntity")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateFish(@MappingTarget Fish fish, FishDto fishDto);
 }

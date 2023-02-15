@@ -26,6 +26,8 @@ public class RegisterService {
 
         Role role = roleService.getByRoleId(2);
 
+        user.setRole(role);
+
         userService.saveUser(user);
 
 

@@ -103,5 +103,8 @@ ALTER TABLE "user" ADD CONSTRAINT user_role
             INITIALLY IMMEDIATE
 ;
 
+ALTER TABLE "user"
+    ADD CONSTRAINT UC_User UNIQUE (username,e_mail);
+
 -- End of file.
 

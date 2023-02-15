@@ -17,7 +17,7 @@ public interface UserMapper {
 
 
     @Mapping(source = "username", target = "username")
-    @Mapping(source = "email", target = "eMail")
+    @Mapping(source = "email", target = "EMail")
     @Mapping(source = "password", target = "password")
     @Mapping(constant = Status.ACTIVE, target = "status")
     User registerEntity(RegisterDto registerDto);
