@@ -17,6 +17,14 @@ public class FishService {
         return fishRepository.findPublicFish(true, Status.ACTIVE, Status.ACTIVE, Status.ACTIVE);
     }
 
+    public List<Fish> getUserFish(Integer userId) {
+
+        return fishRepository.findByUserId(userId,true, Status.ACTIVE, Status.ACTIVE);
+    }
+    public List<Fish> getCatchFish(Integer catchId) {
+        return fishRepository.findByCatchId(catchId, true, Status.ACTIVE, Status.ACTIVE);
+    }
+
 
     public void saveFish(Fish fish) {
         fishRepository.save(fish);
@@ -25,4 +33,6 @@ public class FishService {
     public Fish findFish(Integer fishId) {
         return fishRepository.findById(fishId).get();
     }
+
+
 }

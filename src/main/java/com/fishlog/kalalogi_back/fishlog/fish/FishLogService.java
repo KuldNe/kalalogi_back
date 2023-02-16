@@ -56,6 +56,16 @@ public class FishLogService {
         return fishMapper.toDtos(fishies);
     }
 
+    public List<FishViewDto> getUserFish(Integer userId) {
+        List<Fish> fishies = fishService.getUserFish(userId);
+        return fishMapper.toDtos(fishies);
+    }
+
+    public List<FishViewDto> getCatchFish(Integer catchId) {
+        List<Fish> fishies = fishService.getCatchFish(catchId);
+        return fishMapper.toDtos(fishies);
+    }
+
 
 
     public void addCatch(CatchDto catchDto) {
@@ -127,4 +137,5 @@ public class FishLogService {
         fish.setStatus(Status.DEACTIVATED);
         fishService.saveFish(fish);
     }
+
 }

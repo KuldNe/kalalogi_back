@@ -17,6 +17,8 @@ public interface FishMapper {
     @Mapping(source = "acatch.waterbody.name", target = "locationName")
     @Mapping(source = "acatch.user.username", target = "userName")
     @Mapping(expression = "java(PictureUtil.byteArrayToString(fish.getPicture()))", target = "picture")
+    @Mapping(source = "publicField", target = "isPublic")
+    @Mapping(source = "id",target = "fishId")
     FishViewDto toDto(Fish fish);
 
 

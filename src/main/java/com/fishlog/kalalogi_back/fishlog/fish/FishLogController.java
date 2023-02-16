@@ -21,12 +21,26 @@ public class FishLogController {
         return fishLogService.getAllSpecies();
     }
 
-    @GetMapping("/fish")
+    @GetMapping("/fishies")
     @Operation(summary = "Find all caught fish details from the database", description = "This is used to display fish caught")
-    public List<FishViewDto> getAllFIsh() {
+    public List<FishViewDto> getAllFish() {
 
         return fishLogService.getAllFish();
     }
+    @GetMapping("/user/fish")
+    @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
+    public List<FishViewDto> getUserFIsh(@RequestParam Integer userId) {
+
+        return fishLogService.getUserFish(userId);
+    }
+    @GetMapping("/catch/fish")
+    @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
+    public List<FishViewDto> getCatchFIsh(@RequestParam Integer catchId) {
+
+        return fishLogService.getCatchFish(catchId);
+    }
+
+
 
     @GetMapping("/catches")
     @Operation (summary = "Get user catches from DB", description = "????")

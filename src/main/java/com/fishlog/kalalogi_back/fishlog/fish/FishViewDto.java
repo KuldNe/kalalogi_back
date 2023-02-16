@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class FishViewDto {
+   private Integer fishId;
    private String speciesName;
    private Integer length;
    private Integer weight;
