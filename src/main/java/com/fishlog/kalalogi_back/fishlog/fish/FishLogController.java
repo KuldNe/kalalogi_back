@@ -15,9 +15,18 @@ public class FishLogController {
     @Resource
     private FishLogService fishLogService;
 
+
+    @GetMapping("/user/fish")
+    @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
+    public List<FishViewDto> getUserFishTemp(@RequestParam Integer userId, @RequestParam Integer waterbodyId, @RequestParam Integer speciesId) {
+
+        return fishLogService.getUserFishTemp(userId, waterbodyId, speciesId);
+    }
+
+
     @GetMapping("/fish/species")
     @Operation(summary = "Find all species from the database", description = "This is used for the species dropdown")
-    public List<SpeciesDto>  getAllSpecies() {
+    public List<SpeciesDto> getAllSpecies() {
         return fishLogService.getAllSpecies();
     }
 
@@ -27,12 +36,21 @@ public class FishLogController {
 
         return fishLogService.getAllFish();
     }
-    @GetMapping("/user/fish")
-    @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
-    public List<FishViewDto> getUserFIsh(@RequestParam Integer userId) {
 
-        return fishLogService.getUserFish(userId);
+    @GetMapping("/fish")
+    @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
+    public FishDto getFish(@RequestParam Integer fishId) {
+
+        return fishLogService.getFish(fishId);
     }
+
+//    @GetMapping("/user/fish")
+//    @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
+//    public List<FishViewDto> getUserFIsh(@RequestParam Integer userId) {
+//
+//        return fishLogService.getUserFish(userId);
+//    }
+
     @GetMapping("/catch/fish")
     @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
     public List<FishViewDto> getCatchFIsh(@RequestParam Integer catchId) {
@@ -41,30 +59,29 @@ public class FishLogController {
     }
 
 
-
     @GetMapping("/catches")
-    @Operation (summary = "Get user catches from DB", description = "????")
-    public List<CatchViewDto> getUserCatches (@RequestParam Integer userId) {
+    @Operation(summary = "Get user catches from DB", description = "????")
+    public List<CatchViewDto> getUserCatches(@RequestParam Integer userId) {
 
         return fishLogService.getUserCatches(userId);
     }
 
     @GetMapping("/catch")
-    @Operation (summary = "Get one catch info by Id", description = "Get one catch info for adding a fish to the catch")
+    @Operation(summary = "Get one catch info by Id", description = "Get one catch info for adding a fish to the catch")
     public CatchViewDto getCatch(@RequestParam Integer catchId) {
 
         return fishLogService.getCatch(catchId);
     }
 
     @PostMapping("/catch")
-    @Operation (summary = "Add new catch to database", description = "????")
-    public void addCatch(@RequestBody CatchDto catchDto){
+    @Operation(summary = "Add new catch to database", description = "????")
+    public void addCatch(@RequestBody CatchDto catchDto) {
         fishLogService.addCatch(catchDto);
     }
 
     @PostMapping("/fish")
-    @Operation (summary = "Add caught fish details to database", description = "???")
-        public void addFish(@RequestBody FishDto fishDto) {
+    @Operation(summary = "Add caught fish details to database", description = "???")
+    public void addFish(@RequestBody FishDto fishDto) {
         fishLogService.addFish(fishDto);
     }
 

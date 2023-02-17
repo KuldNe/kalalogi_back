@@ -21,9 +21,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FishLogService {
+    public static final Integer ALL_WATERBODIES_ID = 0;
+    public static final Integer ALL_SPECIES_ID = 0;
     @Resource
     private SpeciesService speciesService;
     @Resource
@@ -67,18 +70,17 @@ public class FishLogService {
     }
 
 
-
     public void addCatch(CatchDto catchDto) {
         Acatch acatch = acatchMapper.toEntity(catchDto);
 
-      User user = userService.findUserById(catchDto.getUserId());
-      acatch.setUser(user);
+        User user = userService.findUserById(catchDto.getUserId());
+        acatch.setUser(user);
 
-      Waterbody waterbody = waterbodyService.findWaterbodyId(catchDto.getWaterbodyId());
+        Waterbody waterbody = waterbodyService.findWaterbodyId(catchDto.getWaterbodyId());
 
-      acatch.setWaterbody(waterbody);
+        acatch.setWaterbody(waterbody);
 
-      acatchService.saveAcatch(acatch);
+        acatchService.saveAcatch(acatch);
 
     }
 
@@ -98,7 +100,7 @@ public class FishLogService {
     public List<CatchViewDto> getUserCatches(Integer userId) {
         List<Acatch> catches = acatchService.findCatchesByUser(userId);
 
-    return acatchMapper.toDtos(catches);
+        return acatchMapper.toDtos(catches);
     }
 
     public CatchViewDto getCatch(Integer catchId) {
@@ -138,4 +140,42 @@ public class FishLogService {
         fishService.saveFish(fish);
     }
 
+    public FishDto getFish(Integer fishId) {
+        Fish fish = fishService.findFish(fishId);
+        return fishMapper.toFishDto(fish);
+    }
+
+    public List<FishViewDto> getUserFishTemp(Integer userId, Integer waterbodyId, Integer speciesId) {
+        List<Fish> fishies = fishService.getUserFish(userId);
+
+        fishies = filterWaterbodiesIfRequired(waterbodyId, fishies);
+        fishies = filterSpeciesIfRequired(speciesId, fishies);
+        return fishMapper.toDtos(fishies);
+    }
+
+    private List<Fish> filterSpeciesIfRequired(Integer speciesId, List<Fish> fishies) {
+        if (!ALL_SPECIES_ID.equals(speciesId)) {
+            fishies = filterBySpeciesId(speciesId, fishies);
+        }
+        return fishies;
+    }
+
+    private static List<Fish> filterWaterbodiesIfRequired(Integer waterbodyId, List<Fish> fishies) {
+        if (!ALL_WATERBODIES_ID.equals(waterbodyId)) {
+            fishies = filterByWaterbodyId(waterbodyId, fishies);
+        }
+        return fishies;
+    }
+
+    private List<Fish> filterBySpeciesId(Integer speciesId, List<Fish> fishies) {
+        return fishies.stream()
+                .filter(fish -> fish.getSpecies().getId().equals(speciesId))
+                .collect(Collectors.toList());
+    }
+
+    private static List<Fish> filterByWaterbodyId(Integer waterbodyId, List<Fish> fishies) {
+        return fishies.stream()
+                .filter(fish -> fish.getAcatch().getWaterbody().getId().equals(waterbodyId))
+                .collect(Collectors.toList());
+    }
 }

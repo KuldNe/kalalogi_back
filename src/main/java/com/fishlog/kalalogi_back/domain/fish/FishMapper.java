@@ -45,4 +45,16 @@ public interface FishMapper {
     @InheritConfiguration (name = "toEntity")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateFish(@MappingTarget Fish fish, FishDto fishDto);
+
+
+    @Mapping(source = "acatch.date", target = "date")
+    @Mapping(source = "acatch.id", target = "catchId")
+    @Mapping(source = "species.id", target = "speciesId")
+    @Mapping(source = "length", target = "length")
+    @Mapping(source = "weight", target = "weight")
+    @Mapping(source = "comment", target = "comment")
+    @Mapping(source = "released", target = "released")
+    @Mapping(source = "publicField", target = "isPublic")
+    @Mapping(expression = "java(PictureUtil.byteArrayToString(fish.getPicture()))", target = "picture")
+    FishDto toFishDto(Fish fish);
 }
