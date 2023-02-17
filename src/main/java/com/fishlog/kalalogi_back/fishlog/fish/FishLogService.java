@@ -54,8 +54,12 @@ public class FishLogService {
         return speciesMapper.toDtos(species);
     }
 
-    public List<FishViewDto> getAllFish() {
+    public List<FishViewDto> getAllFish(Integer waterbodyId, Integer speciesId) {
         List<Fish> fishies = fishService.getAllFish();
+
+        fishies = filterWaterbodiesIfRequired(waterbodyId, fishies);
+        fishies = filterSpeciesIfRequired(speciesId, fishies);
+
         return fishMapper.toDtos(fishies);
     }
 

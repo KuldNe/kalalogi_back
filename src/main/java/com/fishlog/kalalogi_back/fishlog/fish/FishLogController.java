@@ -32,9 +32,9 @@ public class FishLogController {
 
     @GetMapping("/fishies")
     @Operation(summary = "Find all caught fish details from the database", description = "This is used to display fish caught")
-    public List<FishViewDto> getAllFish() {
+    public List<FishViewDto> getAllFish(@RequestParam Integer waterbodyId, @RequestParam Integer speciesId) {
 
-        return fishLogService.getAllFish();
+        return fishLogService.getAllFish(waterbodyId, speciesId);
     }
 
     @GetMapping("/fish")
