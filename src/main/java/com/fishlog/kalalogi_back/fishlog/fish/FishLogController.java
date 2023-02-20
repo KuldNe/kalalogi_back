@@ -18,9 +18,9 @@ public class FishLogController {
 
     @GetMapping("/user/fish")
     @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
-    public List<FishViewDto> getUserFishTemp(@RequestParam Integer userId, @RequestParam Integer waterbodyId, @RequestParam Integer speciesId) {
+    public FishPageDto getUserFish(@RequestParam Integer userId, @RequestParam Integer waterbodyId, @RequestParam Integer speciesId) {
 
-        return fishLogService.getUserFishTemp(userId, waterbodyId, speciesId);
+        return fishLogService.getUserFish(userId, waterbodyId, speciesId);
     }
 
 
@@ -32,13 +32,13 @@ public class FishLogController {
 
     @GetMapping("/fishies")
     @Operation(summary = "Find all caught fish details from the database", description = "This is used to display fish caught")
-    public List<FishViewDto> getAllFish(@RequestParam Integer waterbodyId, @RequestParam Integer speciesId) {
+    public FishPageDto getFishies(@RequestParam Integer waterbodyId, @RequestParam Integer speciesId) {
 
-        return fishLogService.getAllFish(waterbodyId, speciesId);
+        return fishLogService.getFishies(waterbodyId, speciesId);
     }
 
     @GetMapping("/fish")
-    @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
+    @Operation(summary = "Find a fishes details from the database", description = "This is used to get the data of a single fish")
     public FishDto getFish(@RequestParam Integer fishId) {
 
         return fishLogService.getFish(fishId);
@@ -46,10 +46,10 @@ public class FishLogController {
 
 
     @GetMapping("/catch/fish")
-    @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
-    public List<FishViewDto> getCatchFIsh(@RequestParam Integer catchId) {
+    @Operation(summary = "find fish from a single catch from DB", description = "This is used to display fish related toa single catch")
+    public FishPageDto getCatchFIsh(@RequestParam Integer catchId, @RequestParam Integer waterbodyId, @RequestParam Integer speciesId) {
 
-        return fishLogService.getCatchFish(catchId);
+        return fishLogService.getCatchFish(catchId, waterbodyId, speciesId);
     }
 
 

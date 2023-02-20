@@ -18,7 +18,6 @@ import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,23 +53,29 @@ public class FishLogService {
         return speciesMapper.toDtos(species);
     }
 
-    public List<FishViewDto> getAllFish(Integer waterbodyId, Integer speciesId) {
-        List<Fish> fishies = fishService.getAllFish();
+    public FishPageDto getFishies(Integer waterbodyId, Integer speciesId) {
+        if(waterbodyId==0) {waterbodyId=null;}
+        if(speciesId==0) {speciesId=null;}
 
-        fishies = filterWaterbodiesIfRequired(waterbodyId, fishies);
-        fishies = filterSpeciesIfRequired(speciesId, fishies);
 
-        return fishMapper.toDtos(fishies);
+        List<Fish> fishies = fishService.getFish(waterbodyId, speciesId);
+        FishPageDto fishpage = new FishPageDto();
+        fishpage.setFishies(fishMapper.toDtos(fishies));
+        fishpage.setTotalPages(2);
+
+        return fishpage;
     }
 
-    public List<FishViewDto> getUserFish(Integer userId) {
-        List<Fish> fishies = fishService.getUserFish(userId);
-        return fishMapper.toDtos(fishies);
-    }
 
-    public List<FishViewDto> getCatchFish(Integer catchId) {
-        List<Fish> fishies = fishService.getCatchFish(catchId);
-        return fishMapper.toDtos(fishies);
+    public FishPageDto getCatchFish(Integer catchId, Integer waterbodyId, Integer speciesId) {
+        if(waterbodyId==0) {waterbodyId=null;}
+        if(speciesId==0) {speciesId=null;}
+
+        List<Fish> fishies = fishService.getCatchFish(catchId, waterbodyId, speciesId);
+        FishPageDto fishPage = new FishPageDto();
+        fishPage.setFishies(fishMapper.toDtos(fishies));
+        fishPage.setTotalPages(2);
+        return fishPage;
     }
 
 
@@ -149,12 +154,17 @@ public class FishLogService {
         return fishMapper.toFishDto(fish);
     }
 
-    public List<FishViewDto> getUserFishTemp(Integer userId, Integer waterbodyId, Integer speciesId) {
-        List<Fish> fishies = fishService.getUserFish(userId);
+    public FishPageDto getUserFish(Integer userId, Integer waterbodyId, Integer speciesId) {
+        if(waterbodyId==0) {waterbodyId=null;}
+        if(speciesId==0) {speciesId=null;}
 
-        fishies = filterWaterbodiesIfRequired(waterbodyId, fishies);
-        fishies = filterSpeciesIfRequired(speciesId, fishies);
-        return fishMapper.toDtos(fishies);
+        List<Fish> fishies = fishService.getUserFish(userId, waterbodyId, speciesId);
+
+        FishPageDto fishpage = new FishPageDto();
+        fishpage.setFishies(fishMapper.toDtos(fishies));
+        fishpage.setTotalPages(2);
+
+        return fishpage;
     }
 
     private List<Fish> filterSpeciesIfRequired(Integer speciesId, List<Fish> fishies) {

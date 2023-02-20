@@ -21,7 +21,6 @@ public class AcatchService {
     }
 
     public List<Acatch> findCatchesByUser(Integer userId) {
-
         return acatchRepository.findCatchesByUser(userId, Status.ACTIVE);
     }
 }

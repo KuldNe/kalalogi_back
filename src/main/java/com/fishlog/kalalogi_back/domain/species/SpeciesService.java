@@ -20,6 +20,7 @@ public class SpeciesService {
 
 
     public List<Species> findAllSpecies() {
+
         return speciesRepository.findAll(Sort.by("name"));
 
     }

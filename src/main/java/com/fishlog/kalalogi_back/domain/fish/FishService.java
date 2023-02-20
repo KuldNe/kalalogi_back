@@ -13,16 +13,16 @@ public class FishService {
     private FishRepository fishRepository;
 
 
-    public List<Fish> getAllFish() {
-        return fishRepository.findPublicFish(true, Status.ACTIVE, Status.ACTIVE, Status.ACTIVE);
+    public List<Fish> getFish(Integer waterbodyId, Integer speciesId) {
+        return fishRepository.findPublicFish(true, Status.ACTIVE, Status.ACTIVE, Status.ACTIVE, waterbodyId, speciesId);
     }
 
-    public List<Fish> getUserFish(Integer userId) {
+    public List<Fish> getUserFish(Integer userId, Integer waterbodyId, Integer speciesId) {
 
-        return fishRepository.findByUserId(userId,true, Status.ACTIVE, Status.ACTIVE);
+        return fishRepository.findByUserId(userId,true, Status.ACTIVE, Status.ACTIVE, waterbodyId, speciesId);
     }
-    public List<Fish> getCatchFish(Integer catchId) {
-        return fishRepository.findByCatchId(catchId, true, Status.ACTIVE, Status.ACTIVE);
+    public List<Fish> getCatchFish(Integer catchId, Integer waterbodyId, Integer speciesId) {
+        return fishRepository.findByCatchId(catchId, true, Status.ACTIVE, Status.ACTIVE, waterbodyId, speciesId);
     }
 
 
