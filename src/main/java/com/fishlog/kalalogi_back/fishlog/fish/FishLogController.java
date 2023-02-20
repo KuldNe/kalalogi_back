@@ -5,6 +5,8 @@ import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,9 +34,9 @@ public class FishLogController {
 
     @GetMapping("/fishies")
     @Operation(summary = "Find all caught fish details from the database", description = "This is used to display fish caught")
-    public FishPageDto getFishies(@RequestParam Integer waterbodyId, @RequestParam Integer speciesId) {
-
-        return fishLogService.getFishies(waterbodyId, speciesId);
+    public FishPageDto getFishies(@RequestParam Integer waterbodyId, @RequestParam Integer speciesId, @RequestParam Integer pageNo,@RequestParam Integer perPage) {
+        Pageable pagination = PageRequest.of(pageNo, perPage);
+        return fishLogService.getFishies(waterbodyId, speciesId, pagination);
     }
 
     @GetMapping("/fish")

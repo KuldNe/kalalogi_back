@@ -17,6 +17,7 @@ import com.fishlog.kalalogi_back.fishlog.Status;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
 import jakarta.annotation.Resource;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -53,12 +54,12 @@ public class FishLogService {
         return speciesMapper.toDtos(species);
     }
 
-    public FishPageDto getFishies(Integer waterbodyId, Integer speciesId) {
+    public FishPageDto getFishies(Integer waterbodyId, Integer speciesId, Pageable pagination) {
         if(waterbodyId==0) {waterbodyId=null;}
         if(speciesId==0) {speciesId=null;}
 
 
-        List<Fish> fishies = fishService.getFish(waterbodyId, speciesId);
+        List<Fish> fishies = fishService.getFish(waterbodyId, speciesId, pagination);
         FishPageDto fishpage = new FishPageDto();
         fishpage.setFishies(fishMapper.toDtos(fishies));
         fishpage.setTotalPages(2);
