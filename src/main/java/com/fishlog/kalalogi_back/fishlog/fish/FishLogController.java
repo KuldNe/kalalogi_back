@@ -44,12 +44,6 @@ public class FishLogController {
         return fishLogService.getFish(fishId);
     }
 
-//    @GetMapping("/user/fish")
-//    @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
-//    public List<FishViewDto> getUserFIsh(@RequestParam Integer userId) {
-//
-//        return fishLogService.getUserFish(userId);
-//    }
 
     @GetMapping("/catch/fish")
     @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
