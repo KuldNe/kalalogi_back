@@ -2,11 +2,11 @@ package com.fishlog.kalalogi_back.domain.fish;
 
 import com.fishlog.kalalogi_back.fishlog.Status;
 import jakarta.annotation.Resource;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FishService {
@@ -14,7 +14,7 @@ public class FishService {
     private FishRepository fishRepository;
 
 
-    public List<Fish> getFish(Integer waterbodyId, Integer speciesId, Pageable pagination) {
+    public Page<Fish> getFish(Integer waterbodyId, Integer speciesId, Pageable pagination) {
         return fishRepository.findPublicFish(true, Status.ACTIVE, Status.ACTIVE, Status.ACTIVE, waterbodyId, speciesId, pagination);
     }
 
