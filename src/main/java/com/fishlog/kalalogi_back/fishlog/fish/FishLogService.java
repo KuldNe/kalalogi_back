@@ -16,9 +16,12 @@ import com.fishlog.kalalogi_back.domain.catches.AcatchMapper;
 import com.fishlog.kalalogi_back.fishlog.Status;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.ChartFishDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.FishDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.FishViewDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.SpeciesDto;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -72,6 +75,11 @@ public class FishLogService {
         List<Fish> fishies = fishService.getCatchFish(catchId);
         return fishMapper.toDtos(fishies);
     }
+//
+//    public List<FishViewDto> getChartFish(Integer userId) {
+//        List<Fish> chartFish = fishService.getUserFish(userId);
+//        return  fishMapper.toDtos(chartFish);
+//    }
 
 
     public void addCatch(CatchDto catchDto) {
@@ -181,5 +189,10 @@ public class FishLogService {
         return fishies.stream()
                 .filter(fish -> fish.getAcatch().getWaterbody().getId().equals(waterbodyId))
                 .collect(Collectors.toList());
+    }
+
+
+    public List<ChartFishDto> getFishChartInfo(Integer userId) {
+        return fishService.getFishChartInfo(userId);
     }
 }

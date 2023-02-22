@@ -3,6 +3,10 @@ package com.fishlog.kalalogi_back.fishlog.fish;
 
 import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.ChartFishDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.FishDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.FishViewDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.SpeciesDto;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +18,19 @@ public class FishLogController {
 
     @Resource
     private FishLogService fishLogService;
+
+//    @GetMapping("/barchart")
+//    @Operation(summary = "Finds all fishes for charts")
+//    public List<FishViewDto> getChartFish(Integer userId) {
+//        return fishLogService.getChartFish(userId);
+//    }
+
+
+    @GetMapping("/barchart")
+    @Operation(summary = "Finds all user fish species by count")
+    public List<ChartFishDto> getFishChartInfo(@RequestParam Integer userId) {
+        return fishLogService.getFishChartInfo(userId);
+    }
 
 
     @GetMapping("/user/fish")

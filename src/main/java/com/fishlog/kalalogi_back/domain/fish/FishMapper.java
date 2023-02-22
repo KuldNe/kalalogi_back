@@ -1,15 +1,16 @@
 package com.fishlog.kalalogi_back.domain.fish;
 
 import com.fishlog.kalalogi_back.fishlog.Status;
-import com.fishlog.kalalogi_back.fishlog.fish.FishDto;
-import com.fishlog.kalalogi_back.fishlog.fish.FishViewDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.ChartFishDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.FishDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.FishViewDto;
 import org.mapstruct.*;
 import com.fishlog.kalalogi_back.util.PictureUtil;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring", imports =  PictureUtil.class)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring", imports = PictureUtil.class)
 public interface FishMapper {
 
     @Mapping(source = "species.name", target = "speciesName")
@@ -18,7 +19,7 @@ public interface FishMapper {
     @Mapping(source = "acatch.user.username", target = "userName")
     @Mapping(expression = "java(PictureUtil.byteArrayToString(fish.getPicture()))", target = "picture")
     @Mapping(source = "publicField", target = "isPublic")
-    @Mapping(source = "id",target = "fishId")
+    @Mapping(source = "id", target = "fishId")
     FishViewDto toDto(Fish fish);
 
 
@@ -42,7 +43,7 @@ public interface FishMapper {
         return bytes;
     }
 
-    @InheritConfiguration (name = "toEntity")
+    @InheritConfiguration(name = "toEntity")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateFish(@MappingTarget Fish fish, FishDto fishDto);
 

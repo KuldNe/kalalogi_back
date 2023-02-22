@@ -1,7 +1,6 @@
 package com.fishlog.kalalogi_back.domain.species;
 
 
-import com.fishlog.kalalogi_back.fishlog.fish.SpeciesDto;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

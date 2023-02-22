@@ -1,6 +1,8 @@
 package com.fishlog.kalalogi_back.domain.fish;
 
 import com.fishlog.kalalogi_back.fishlog.Status;
+import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.ChartFishDto;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -35,4 +37,7 @@ public class FishService {
     }
 
 
+    public List<ChartFishDto> getFishChartInfo(Integer userId) {
+        return fishRepository.getFishChartInfo(userId);
+    }
 }

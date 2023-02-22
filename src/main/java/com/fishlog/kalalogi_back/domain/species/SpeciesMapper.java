@@ -1,6 +1,6 @@
 package com.fishlog.kalalogi_back.domain.species;
 
-import com.fishlog.kalalogi_back.fishlog.fish.SpeciesDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.SpeciesDto;
 import org.mapstruct.*;
 
 import java.util.List;

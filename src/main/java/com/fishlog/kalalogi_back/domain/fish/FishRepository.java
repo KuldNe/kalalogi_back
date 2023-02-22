@@ -1,5 +1,6 @@
 package com.fishlog.kalalogi_back.domain.fish;
 
+import com.fishlog.kalalogi_back.fishlog.fish.dto.ChartFishDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -25,6 +26,9 @@ public interface FishRepository extends JpaRepository<Fish, Integer> {
             order by f.species.name""")
     List<Fish> findByCatchId(Integer catchId, Boolean publicField, String catchStatus, String fishStatus);
 
-
+    @Query("""
+            SELECT new com.fishlog.kalalogi_back.fishlog.fish.dto.ChartFishDto(f.species.name, COUNT(f.species.name))
+            FROM Fish AS f where f.acatch.user.id = ?1 GROUP BY f.species.name ORDER BY f.species.name""")
+    List<ChartFishDto> getFishChartInfo(Integer userId);
 
 }
