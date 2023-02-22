@@ -130,6 +130,7 @@ public class FishLogService {
     public void editFish(Integer fishId, FishDto fishDto) {
         Fish fish = fishService.findFish(fishId);
         fishMapper.updateFish(fish, fishDto);
+        fish.setSpecies(speciesService.findBySpeciesId(fishDto.getSpeciesId()));
         fishService.saveFish(fish);
 
     }
