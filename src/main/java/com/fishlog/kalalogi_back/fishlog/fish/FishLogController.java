@@ -3,6 +3,7 @@ package com.fishlog.kalalogi_back.fishlog.fish;
 
 import com.fishlog.kalalogi_back.fishlog.catches.CatchDto;
 import com.fishlog.kalalogi_back.fishlog.catches.CatchViewDto;
+import com.fishlog.kalalogi_back.fishlog.fish.dto.ChartFishDto;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.PageRequest;
@@ -18,25 +19,37 @@ public class FishLogController {
     private FishLogService fishLogService;
 
 
-    @GetMapping("/user/fish")
-    @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
-    public FishPageDto getUserFish(@RequestParam Integer userId, @RequestParam Integer waterbodyId, @RequestParam Integer speciesId) {
-
-        return fishLogService.getUserFish(userId, waterbodyId, speciesId);
-    }
-
-
-    @GetMapping("/fish/species")
-    @Operation(summary = "Find all species from the database", description = "This is used for the species dropdown")
-    public List<SpeciesDto> getAllSpecies() {
-        return fishLogService.getAllSpecies();
-    }
-
     @GetMapping("/fishies")
     @Operation(summary = "Find all caught fish details from the database", description = "This is used to display fish caught")
     public FishPageDto getFishies(@RequestParam Integer waterbodyId, @RequestParam Integer speciesId, @RequestParam Integer pageNo,@RequestParam Integer perPage) {
         Pageable pagination = PageRequest.of(pageNo, perPage);
         return fishLogService.getFishies(waterbodyId, speciesId, pagination);
+    }
+
+    @GetMapping("/user/fish")
+    @Operation(summary = "Find all Users fish details from the database", description = "This is used to display fish caught by User")
+    public FishPageDto getUserFish(@RequestParam Integer userId, @RequestParam Integer waterbodyId, @RequestParam Integer speciesId, @RequestParam Integer pageNo,@RequestParam Integer perPage) {
+        Pageable pagination = PageRequest.of(pageNo, perPage);
+        return fishLogService.getUserFish(userId, waterbodyId, speciesId, pagination);
+    }
+
+
+    @GetMapping("/catch/fish")
+    @Operation(summary = "find fish from a single catch from DB", description = "This is used to display fish related toa single catch")
+    public FishPageDto getCatchFIsh(@RequestParam Integer catchId, @RequestParam Integer waterbodyId, @RequestParam Integer speciesId, @RequestParam Integer pageNo,@RequestParam Integer perPage) {
+        Pageable pagination = PageRequest.of(pageNo, perPage);
+        return fishLogService.getCatchFish(catchId, waterbodyId, speciesId, pagination);
+    }
+
+    @GetMapping("/barchart")
+    @Operation(summary = "Finds all user fish species by count")
+    public List<ChartFishDto> getFishChartInfo(@RequestParam Integer userId) {
+        return fishLogService.getFishChartInfo(userId);
+    }
+    @GetMapping("/fish/species")
+    @Operation(summary = "Find all species from the database", description = "This is used for the species dropdown")
+    public List<SpeciesDto> getAllSpecies() {
+        return fishLogService.getAllSpecies();
     }
 
     @GetMapping("/fish")
@@ -46,13 +59,6 @@ public class FishLogController {
         return fishLogService.getFish(fishId);
     }
 
-
-    @GetMapping("/catch/fish")
-    @Operation(summary = "find fish from a single catch from DB", description = "This is used to display fish related toa single catch")
-    public FishPageDto getCatchFIsh(@RequestParam Integer catchId, @RequestParam Integer waterbodyId, @RequestParam Integer speciesId) {
-
-        return fishLogService.getCatchFish(catchId, waterbodyId, speciesId);
-    }
 
 
     @GetMapping("/catches")
