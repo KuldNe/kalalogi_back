@@ -104,7 +104,7 @@ ALTER TABLE "user" ADD CONSTRAINT user_role
 ;
 
 ALTER TABLE "user"
-    ADD CONSTRAINT UC_User UNIQUE (username,e_mail);
+    ADD CONSTRAINT UC_User UNIQUE (username);
 
 -- End of file.
 

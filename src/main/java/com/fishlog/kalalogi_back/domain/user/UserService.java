@@ -20,11 +20,18 @@ public class UserService {
         return Validator.getValidUser(optionalUser);
     }
 
+
+
     public User findUserById(Integer userId) {
         return userRepository.findById(userId).get();
     }
 
     public void saveUser(User user) {
         userRepository.save(user);
+    }
+
+    public void userExists(String username) {
+        boolean userExists = userRepository.userExists(username);
+        Validator.validateUserExists(userExists);
     }
 }
